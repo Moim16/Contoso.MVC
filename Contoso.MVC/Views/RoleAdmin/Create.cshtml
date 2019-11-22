@@ -1,0 +1,28 @@
+﻿@model string
+@*La vista Recibe un string el nombre del rol*@
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg-primary col-md-12">
+    <h4>Crear Rol</h4>
+</div>
+<div asp-validation-summary="All" class="text-danger">
+
+</div>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name">
+            Nombre
+        </label>
+        @*model binding busca en el html el atributo name para mandarlo cuando hace postback, tiene que llamarse 
+            igual al del controlador del RoleAdminControlle*@
+        <input name="name" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">
+          Crear
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+

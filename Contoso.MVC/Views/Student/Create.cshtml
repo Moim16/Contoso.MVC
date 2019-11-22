@@ -1,0 +1,50 @@
+﻿@model Contoso.Models.Entities.Student
+@{
+    ViewData["Title"] = "Create";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crear Estudiante</h2>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        @*<form method="post" action="create"> Otra forma*@
+            <form asp-action="Create">
+                @*usando tag helper validationsumary muestra el resumen muestra en ua lista*@
+                <div asp-validation-summary="All" class="text-danger">
+                </div>
+                <div class="form-group">
+                    @*Vinculacion del nombre de entidad con elemento html*@
+                    <label asp-for="Nombres" class="control-label">
+                    </label>
+                    <input asp-for="Nombres" class="form-control" />
+                    <span asp-validation-for="Nombres" class="text-danger">
+                    </span>
+                </div>
+                <div class="form-group">
+                    @*Vinculacion del nombre de entidad con elemento html*@
+                    <label asp-for="Apellidos" class="control-label">
+                    </label>
+                    <input asp-for="Apellidos" class="form-control" />
+                    <span asp-validation-for="Apellidos" class="text-danger">
+                    </span>
+                </div>
+                <div class="form-group">
+                    @*Vinculacion del nombre de entidad con elemento html*@
+                    <label asp-for="Edad" class="control-label">
+                    </label>
+                    <input asp-for="Edad" class="form-control" />
+                    <span asp-validation-for="Edad" class="text-danger">
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+    </div>  
+</div>
+<div>
+    @*Por si nos arrepentimos*@
+    <a asp-action="Index">Cancelar</a>
+</div>
+

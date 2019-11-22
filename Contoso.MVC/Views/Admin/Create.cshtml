@@ -1,0 +1,51 @@
+﻿@model CreateModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crear Nuevo Usuario</h2>
+
+<div asp-validation-summary="All" class="text-danger">
+
+</div>
+
+
+<form asp-action="Create">
+    @*usando tag helper validationsumary muestra el resumen muestra en ua lista*@
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="Name" class="control-label">
+        </label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger">
+        </span>
+    </div>
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="Email" class="control-label">
+        </label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger">
+        </span>
+    </div>
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="Password" class="control-label">
+        </label>
+        <input  type="Password"  asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger">
+        </span>
+    </div>
+    <div class="form-group">
+        @*<button type="submit" value="Crear" class="btn btn-default">
+        </button>*@
+        <input type="submit" value="Create" class="btn btn-default" />
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </div>
+</form>

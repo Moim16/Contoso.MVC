@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Contoso.MVC.Models.DatosAbogadoDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<hr />
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-responsive-md">
+    <table class="table table-bordered table-hover" id="tablax">
+        <thead class="thead-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Codigo</th>
+                <th>Quinquenio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @{ var valorlistaquinquenio = item.Quinquenio; }
+
+                        @foreach (var itemq in @valorlistaquinquenio.Where(x => x.Vigente == 1))
+                        {
+
+                            <div class="row">
+
+                                <center> <h5> Codigo : @itemq.Codigo  fecha fin : @itemq.FechaFin vigencia : Activo </h5></center>
+                            
+
+                            </div>
+
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+    if ($('#tablax tr').length > 1) {
+        initializeDataTable('#tablax');
+    }
+
+    function initializeDataTable(tableSelector) {
+        try {
+
+            $(tableSelector).DataTable({
+                "stateSave": true,
+                "dom": 'Blfrtip',
+
+                "language": {
+                    "url": "../../assets/js/spanish.js"
+                },
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa fa-file-excel-o"></i> Exportar a Excel',
+                        className: 'btn btn-success',
+                        exportOptions: {
+                            modifier: {
+                                page: 'all'
+                            }
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: '<i class="fa fa-file-pdf-o"></i> Exportar PDF',
+                        className: 'btn btn-danger',
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> Imprimir',
+                        className: 'btn btn-info',
+                    }
+                ]
+            });
+        } catch (e) {
+            console.log(e, tableSelector);
+        }
+    }
+
+</script>
+
+
+

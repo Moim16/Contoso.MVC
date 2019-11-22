@@ -1,0 +1,6 @@
+﻿@using Contoso.MVC
+@using Contoso.MVC.Models
+@using Microsoft.AspNetCore.Identity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@*Agregando taghelper personalizado, por eso no se mostraba el campo usuario en la lista de los roles*@
+@addTagHelper Contoso.MVC.Infraestructure.*,Contoso.MVC

@@ -1,0 +1,51 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Usuarios</h2>
+
+<div asp-validation-summary="All" class="text-danger">
+
+</div>
+
+
+<form asp-action="Edit" method="post">
+    @*usando tag helper validationsumary muestra el resumen muestra en ua lista*@
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="UserName" class="control-label">
+        </label>
+        @*<input readonly asp-for="UserName" class="form-control" />*@
+        <input readonly name="name" value="@Model.UserName" class="form-control" />
+      
+    </div>
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="Email" class="control-label">
+        </label>
+        <input asp-for="Email" class="form-control" />
+       
+    </div>
+    <div class="form-group">
+        @*Vinculacion del nombre de entidad con elemento html*@
+        <label asp-for="PasswordHash" class="control-label">
+        </label>
+        @*<input type="Password" asp-for="PasswordHash" class="form-control" />*@
+        <input type="Password" name="pass" value="@Model.PasswordHash" class="form-control" />
+        
+    </div>
+    <div class="form-group">
+       <button type="submit" value="Crear" class="btn btn-default">
+            Editar
+       </button>
+       
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </div>
+</form>

@@ -1,0 +1,35 @@
+﻿@model  Contoso.Models.Entities.Student
+@{
+    ViewData["Title"] = "Delete";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+<h3>¿Esta seguro de eliminar este registro?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            <label asp-for="Nombres"></label>
+        </dt>
+        <dd>
+            <input asp-for="Nombres" readonly />
+        </dd>
+        <dt>
+            <label asp-for="Apellidos"></label>
+        </dt>
+        <dd>
+            <input asp-for="Apellidos" readonly />
+        </dd>
+        <dt>
+            <label asp-for="Edad"></label>
+        </dt>
+        <dd>
+            <input asp-for="Edad" readonly />
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-default" />
+        <a asp-action="Index">Cancelar</a>
+    </form>
+</div>

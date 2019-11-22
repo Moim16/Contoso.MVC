@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Contoso.Models.Entities.Student>
+@*@{
+        ViewData["Title"] = "Inex";
+    }*@
+<h2>Listado de Estudiantes</h2>
+<p>
+    @*Agregamos un hipervinculo*@
+     <a asp-action="Create">Crear Nuevo Estudiante</a>
+</p>
+<div class="table-responsive-md">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Edad)
+                    </td>
+                    <td>
+                        @* taghelper*@
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

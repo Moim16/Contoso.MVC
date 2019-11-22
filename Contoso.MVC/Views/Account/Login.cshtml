@@ -1,0 +1,47 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="text-danger" asp-validation-summary="All">
+</div>
+<form asp-action="Login">
+      <div class="d-flex">
+          <div class="col-md-6 flex-fill">
+              @*El viewbag no es de la vista al controlador, por tal razon el url
+        que viene del viewbag se tiene que guardar en un hidden campo *@
+              @*El name del hidden debe ser el mismo del controlador post login,
+        sino mandara null en esta caso returnurl el modelbinder no lo reconocera*@
+              @*Este ViewBag returUrl viene del login get de AccountController*@
+              <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+              <h1>
+                  Por Favor Ingrese
+              </h1>
+
+              @*Para hacer referencia si for inputUserName esta vinculada a inputUserName*@
+              <label asp-for="UserName" for="inputUserName" class="sr-only">
+
+              </label>
+              <input id="inputUserName" asp-for="UserName" class="form-control" placeholder="Nombre del Usuario" required autofocus />
+              <label asp-for="Password" for="inputPassword" class="sr-only">
+
+              </label>
+
+              @*asp-for referencia del modelo para que me vincule el tipo y si es string pondra 
+              una caja de texto para que sea password hay que ponerle type="password"*@
+              <input id="inputPassword"  type="password" asp-for="Password" class="form-control" placeholder="Password" required autofocus />
+
+              <button class="btn btn-lg btn-primary btn-block">
+                  Ingresar
+              </button>
+
+
+          </div>
+      </div>
+</form>
+
+<h2>Login</h2>
+
